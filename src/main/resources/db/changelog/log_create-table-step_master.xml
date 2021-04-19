@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="create_step_master">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="step_master" schemaName="rops"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="step_master">
+            <column name="job_id" type="VARCHAR(10)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="step_id" type="VARCHAR(10)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="step_name" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(100)">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="job_id"
+                                 baseTableName="step_master"
+                                 constraintName="fk_step_master_job"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="job_id"
+                                 referencedTableName="job_master"/>
+
+        <rollback>
+            <dropTable tableName="step_master"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

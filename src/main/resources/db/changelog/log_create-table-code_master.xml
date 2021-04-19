@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="create_code_master">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="code_master" schemaName="rops"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="code_master">
+            <column name="code_type_id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code_id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code_name" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="use_yn" type="CHAR(1)" defaultValue="y">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="code_type_id"
+                                 baseTableName="code_master"
+                                 constraintName="fk_code_master_type_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="code_type_id"
+                                 referencedTableName="code_type_master"/>
+        <rollback>
+            <dropTable tableName="code_master"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

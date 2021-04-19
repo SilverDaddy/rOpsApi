@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="insert_init">
+        <insert tableName="logging_hystory">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="001-000" />
+            <column name="seq_no" value="1" />
+            <column name="status" value="0" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="desc" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_hystory">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="001-010" />
+            <column name="seq_no" value="1" />
+            <column name="status" value="1" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="desc" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_hystory">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="001-020" />
+            <column name="seq_no" value="1" />
+            <column name="status" value="1" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="desc" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_hystory">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="001-030" />
+            <column name="seq_no" value="1" />
+            <column name="status" value="1" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="desc" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_hystory">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="001-999" />
+            <column name="seq_no" value="1" />
+            <column name="status" value="3" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="desc" value="요청-이주환" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

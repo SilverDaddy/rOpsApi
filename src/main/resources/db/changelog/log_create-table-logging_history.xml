@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="create_logging_history">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="logging_history" schemaName="rops"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="logging_history">
+            <column name="bot_id" type="VARCHAR(10)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="job_id" type="VARCHAR(10)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="seq_no" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="step_id" type="VARCHAR(10)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code_id_status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="run_date" type="DATETIME">
+            </column>
+            <column name="description" type="VARCHAR(200)">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="bot_id"
+                                 baseTableName="logging_history"
+                                 constraintName="fk_logging_history_bot"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="bot_id"
+                                 referencedTableName="bot_master"/>
+
+        <addForeignKeyConstraint baseColumnNames="job_id"
+                                 baseTableName="logging_history"
+                                 constraintName="fk_logging_history_job"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="job_id"
+                                 referencedTableName="job_master"/>
+
+        <addForeignKeyConstraint baseColumnNames="job_id,step_id"
+                                 baseTableName="logging_history"
+                                 constraintName="fk_logging_history_step"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="job_id,step_id"
+                                 referencedTableName="step_master"/>
+
+        <rollback>
+            <dropTable tableName="logging_history"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="insert_test">
+        <insert tableName="bot_master">
+            <column name="bot_id" value="rp01" />
+            <column name="bot_name" value="인프라봇" />
+        </insert>
+
+        <insert tableName="job_master">
+            <column name="job_id" value="001" />
+            <column name="job_name" value="금융규제민원포털 서류 자동화" />
+        </insert>
+
+        <insert tableName="step_master">
+            <column name="step_id" value="000" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="금융규제민원포털 업무 시작" />
+        </insert>
+        <insert tableName="step_master">
+            <column name="step_id" value="010" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="금융규제민원포털 사이트 접속" />
+        </insert>
+        <insert tableName="step_master">
+            <column name="step_id" value="020" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="법령해석 조회 및 다운로드" />
+        </insert>
+        <insert tableName="step_master">
+            <column name="step_id" value="030" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="비조치의견서 조회 및 다운로드" />
+        </insert>
+        <insert tableName="step_master">
+            <column name="step_id" value="040" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="담당자 메일 발송" />
+        </insert>
+        <insert tableName="step_master">
+            <column name="step_id" value="050" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="카카오톡 대화방 파일첨부" />
+        </insert>
+        <insert tableName="step_master">
+            <column name="step_id" value="999" />
+            <column name="job_id" value="001" />
+            <column name="step_name" value="금융규제민원포털 업무 종료" />
+        </insert>
+
+        <insert tableName="code_type_master">
+            <column name="code_type_name" value="상태" />
+            <column name="code_type_name_eng" value="status" />
+        </insert>
+        <insert tableName="code_type_master">
+            <column name="code_type_name" value="업무유형" />
+            <column name="code_type_name_eng" value="Type of Work" />
+        </insert>
+
+        <insert tableName="code_master">
+            <column name="code_type_id" value="1" />
+            <column name="code_id" value="1" />
+            <column name="code_name" value="업무 시작" />
+        </insert>
+        <insert tableName="code_master">
+            <column name="code_type_id" value="1" />
+            <column name="code_id" value="2" />
+            <column name="code_name" value="실행 중" />
+        </insert>
+        <insert tableName="code_master">
+            <column name="code_type_id" value="1" />
+            <column name="code_id" value="3" />
+            <column name="code_name" value="대기" />
+        </insert>
+        <insert tableName="code_master">
+            <column name="code_type_id" value="1" />
+            <column name="code_id" value="4" />
+            <column name="code_name" value="업무 종료(성공)" />
+        </insert>
+        <insert tableName="code_master">
+            <column name="code_type_id" value="1" />
+            <column name="code_id" value="5" />
+            <column name="code_name" value="업무 종료(실패)" />
+        </insert>
+        <insert tableName="code_master">
+            <column name="code_type_id" value="2" />
+            <column name="code_id" value="1" />
+            <column name="code_name" value="정기" />
+        </insert>
+        <insert tableName="code_master">
+            <column name="code_type_id" value="2" />
+            <column name="code_id" value="2" />
+            <column name="code_name" value="비정기" />
+        </insert>
+
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="000" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="1" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="010" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="2" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="020" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="2" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="030" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="2" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="040" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="2" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="050" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="2" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+        <insert tableName="logging_history">
+            <column name="bot_id" value="rp01" />
+            <column name="job_id" value="001" />
+            <column name="step_id" value="999" />
+            <column name="seq_no" value="1" />
+            <column name="code_id_status" value="4" />
+            <column name="run_date" valueDate="NOW()" />
+            <column name="description" value="요청-이주환" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
